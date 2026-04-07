@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>도서 목록</title>
@@ -6,12 +7,16 @@
 </head>
 <body>
 <div class="container py-4">
+
     <header class="pb-3 mb-4 border-bottom">
-        <a href="/bookmarket/home" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-            <img src="imgs/book_logo.png" style="max-height: 50px;">&nbsp;&nbsp;
+        <a th:href="@{/home}" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+            <img th:src="@{/imgs/book_logo.png}" style="max-height: 50px;" alt="Logo">&nbsp;&nbsp;
             <span class="fs-4">BookMarket</span>
         </a>
+        <a th:href="@{/books/해리포터}" class="nav-link d-inline">해리포터</a>&nbsp;|&nbsp;
+        <a th:href="@{/books/JK롤링}" class="nav-link d-inline">JK 롤링</a>
     </header>
+
     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">도서 목록</h1>
@@ -20,16 +25,17 @@
     </div>
 
     <div class="row align-items-md-stretch text-center">
-        <div class="col-md-4" th:each="book:${bookList}">
-            <!--		<img th:src="'/BookMarket/images/'+${book.fileName}" alt="image" style = "width: 60%" />-->
-            <h3 th:text ="${book.name}"></h3>
-            <p th:text = "${book.author}">
-            <p th:text = "${book.publisher} + '|'+ ${book.releaseDate}">
-            <p align="left" th:text = "${book.description}">
-            <p th:text = "${book.unitPrice}+'원'">
-            <p><a th:href= "'/BookMarket/books/book?id='+${book.bookId}" class=" btn btn-Secondary" role="button">상세정보 &raquo;</a>
-        </div>
+        <div class="col-md-4" th:each="book : ${bookList}">
+            <h3 th:text="${book.name}"></h3>
+            <p th:text="${book.author}"></p>
+            <p th:text="${book.publisher} + ' | ' + ${book.releaseDate}"></p>
+            <p align="left" th:text="${book.description}"></p>
+            <p th:text="${book.unitPrice} + '원'"></p>
 
+            <p>
+                <a th:href="@{/books/book(id=${book.bookId})}" class="btn btn-secondary" role="button">상세정보 &raquo;</a>
+            </p>
+        </div>
     </div>
 
 </div>

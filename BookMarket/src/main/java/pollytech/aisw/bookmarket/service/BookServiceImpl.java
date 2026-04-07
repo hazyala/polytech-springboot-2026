@@ -6,9 +6,11 @@ import pollytech.aisw.bookmarket.domain.Book;
 import pollytech.aisw.bookmarket.repository.BookRepository;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
-public class BookServiceImpl implements BookService {
+public class BookServiceImpl implements BookService{
     @Autowired
     private BookRepository bookRepository;
 
@@ -16,4 +18,24 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAllBookList() {
         return bookRepository.getAllBookList();
     }
+
+    @Override
+    public Book getBookById(String bookId) {
+        Book book = bookRepository.getBookById(bookId);
+        return book;
+    }
+
+    @Override
+    public List<Book> getBookListByCategory(String category) {
+        List<Book> booksByCategory = bookRepository.getBookListByCategory(category);
+        return booksByCategory;
+    }
+
+    @Override
+    public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
+        Set<Book> booksByFilter = bookRepository.getBookListByFilter(filter);
+        return booksByFilter;
+    }
+
+
 }
