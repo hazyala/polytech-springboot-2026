@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+</head>
+<body>
+<h3>회원 가입</h3>
+<form action="member" method="post">
+    <p>아이디 : <span th:text="${member.id}"/></p>
+    <p>비밀번호 : <span th:text="${member.passwd}"/></p>
+    <p>거주지 : <span th:text="${member.city}"/></p>
+    <p>성별 : <span th:text="${member.gender}"/></p>
+    <p>취미 : <span th:each="hobby : ${member.hobby}" th:text="${hobby} + '|'"/></p>
+    <p><span th:text="${member.id}"/></p>
+    </p>
+</form>
+</body>
+</html>
