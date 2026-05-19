@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>2. ConstraintValidator 구현체 유형 유효성 검사</title>
+    <style>
+        span{
+            color: red;
+            border: 1px dotted red;
+        }
+    </style>
+</head>
+<body>
+    <h2>2. ConstraintValidator 구현체 유형 유효성 검사</h2>
+    <form th:object="${member2}" action="/exam09_02" method="post">
+        <p>ID: <input type="text" th:field="*{memberId}"><span th:errors="*{memberId}"></span></p>
+        <p>PWD: <input type="text" th:field="*{passwd}"><span th:errors="*{passwd}"></span></p>
+        <p>
+            <button type="submit">확인</button>&nbsp;&nbsp;
+            <button type="reset">취소</button>
+        </p>
+    </form>
+</body>
+</html>

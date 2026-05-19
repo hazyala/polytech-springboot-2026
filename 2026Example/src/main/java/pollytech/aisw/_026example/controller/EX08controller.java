@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class EX08controller {
-    @GetMapping(value = "/example08")
+public class EX08Controller {
+    @GetMapping("/exam08")
     public ModelAndView requestMethod(){
         ModelAndView modelView = new ModelAndView();
-        modelView.addObject("model1","ModelView 연습");
-        modelView.addObject("model2","ModelAndView는 addObject()와 setViewName()을 사용");
-        modelView.setViewName("viewEX08");
+        modelView.addObject("title1", "ModelAndView ?�습");
+        modelView.addObject("title2", "ModelAndView??addObject()?� setViewName()�??�용");
+        modelView.setViewName("viewPage");
         return modelView;
     }
 }

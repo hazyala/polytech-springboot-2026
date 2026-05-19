@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-public class EX_ch05_1_controller {
+@Controller
+public class Chap05_01Controller {
+
     @GetMapping("/chap0501")
     public String requestMethod(@RequestParam("id") String userId, @RequestParam("pwd") String userPwd,  Model model){
         model.addAttribute("userId", userId);

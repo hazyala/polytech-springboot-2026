@@ -11,8 +11,8 @@ import java.util.Map;
 import java.util.Set;
 
 @Repository
-public class BookRepositoryImpl implements BookRepository{
-    private List<Book> listOfBooks = new ArrayList<Book>();
+public class BookRepositoryImpl implements BookRepository {
+    private List<Book> listOfBooks = new ArrayList<>();
 
     public BookRepositoryImpl() {
         Book book1 = new Book();
@@ -61,14 +61,14 @@ public class BookRepositoryImpl implements BookRepository{
     @Override
     public Book getBookById(String bookId) {
         Book book = null;
-        for (Book searchBook: listOfBooks){
-            if (searchBook != null && searchBook.getBookId() != null && searchBook.getBookId().equals(bookId)){
+        for (Book searchBook : listOfBooks) {
+            if (searchBook != null && searchBook.getBookId() != null && searchBook.getBookId().equals(bookId)) {
                 book = searchBook;
                 break;
             }
         }
 
-        if (book == null){
+        if (book == null) {
             throw new IllegalArgumentException("도서ID가 " + bookId + "인 도서는 찾을 수가 없습니다.");
         }
 
@@ -77,10 +77,11 @@ public class BookRepositoryImpl implements BookRepository{
 
     @Override
     public List<Book> getBookListByCategory(String category) {
-        List<Book> booksByCategory = new ArrayList<Book>();
-        for (Book searchBook : listOfBooks){
-            if (category.equalsIgnoreCase(searchBook.getCategory()))
+        List<Book> booksByCategory = new ArrayList<>();
+        for (Book searchBook : listOfBooks) {
+            if (category.equalsIgnoreCase(searchBook.getCategory())) {
                 booksByCategory.add(searchBook);
+            }
         }
 
         return booksByCategory;
@@ -88,15 +89,16 @@ public class BookRepositoryImpl implements BookRepository{
 
     @Override
     public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
-        Set<Book> booksByCategory = new HashSet<Book>();
-        Set<Book> booksByPublisher = new HashSet<Book>();
+        Set<Book> booksByCategory = new HashSet<>();
+        Set<Book> booksByPublisher = new HashSet<>();
         Set<String> booksByFilter = filter.keySet();
 
         if (booksByFilter.contains("publisher")) {
             for (String publisherName : filter.get("publisher")) {
                 for (Book searchBook : listOfBooks) {
-                    if (publisherName.equalsIgnoreCase(searchBook.getPublisher()))
+                    if (publisherName.equalsIgnoreCase(searchBook.getPublisher())) {
                         booksByPublisher.add(searchBook);
+                    }
                 }
             }
         }
@@ -111,5 +113,10 @@ public class BookRepositoryImpl implements BookRepository{
         booksByCategory.retainAll(booksByPublisher);
 
         return booksByCategory;
+    }
+
+    @Override
+    public void setNewBook(Book book) {
+        listOfBooks.add(book);
     }
 }

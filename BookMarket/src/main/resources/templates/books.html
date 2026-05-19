@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>도서 목록</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <title>해리포터 도서 목록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 </head>
-<body>
+<body class="bg-dark text-white">
 <div class="container py-4">
-
-    <header class="pb-3 mb-4 border-bottom">
-        <a th:href="@{/home}" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-            <img th:src="@{/imgs/book_logo.png}" style="max-height: 50px;" alt="Logo">&nbsp;&nbsp;
-            <span class="fs-4">BookMarket</span>
+    <header class="pb-3 mb-4 border-bottom border-warning">
+        <a th:href="@{/home}" class="d-flex align-items-center text-white text-decoration-none">
+            <img th:src="@{/imgs/book_logo.png}" style="max-height: 50px;" alt="Book Logo" />
+            <span class="fs-4 ms-3">마법사의 도서관</span>
         </a>
-        <a th:href="@{/books/해리포터}" class="nav-link d-inline">해리포터</a>&nbsp;|&nbsp;
-        <a th:href="@{/books/JK롤링}" class="nav-link d-inline">JK 롤링</a>
+        <nav class="mt-3">
+            <a th:href="@{/books}" class="btn btn-outline-warning btn-sm me-2">전체 도서</a>
+            <a th:href="@{/books/판타지}" class="btn btn-outline-warning btn-sm me-2">판타지</a>
+            <a th:href="@{/books/all}" class="btn btn-outline-warning btn-sm">전체 보기</a>
+        </nav>
     </header>
 
-    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="p-5 mb-4 bg-secondary bg-opacity-25 rounded-3">
         <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">도서 목록</h1>
-            <p class="col-md-8 fs-4">BookMarket</p>
+            <h1 class="display-5 fw-bold">호그와트 추천 도서</h1>
+            <p class="col-md-8 fs-4">마법 세계를 탐험할 수 있는 특별한 도서들을 만나보세요.</p>
         </div>
     </div>
 
-    <div class="row align-items-md-stretch text-center">
+    <div class="row g-4">
         <div class="col-md-4" th:each="book : ${bookList}">
-            <h3 th:text="${book.name}"></h3>
-            <p th:text="${book.author}"></p>
-            <p th:text="${book.publisher} + ' | ' + ${book.releaseDate}"></p>
-            <p align="left" th:text="${book.description}"></p>
-            <p th:text="${book.unitPrice} + '원'"></p>
-
-            <p>
-                <a th:href="@{/books/book(id=${book.bookId})}" class="btn btn-secondary" role="button">상세정보 &raquo;</a>
-            </p>
+            <div class="card h-100 bg-secondary bg-opacity-25 border-warning">
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${book.name}"></h4>
+                    <p class="text-muted mb-1" th:text="'저자: ' + ${book.author}"></p>
+                    <p class="text-muted mb-1" th:text="'출판사: ' + ${book.publisher}"></p>
+                    <p class="text-muted mb-3" th:text="'출간일: ' + ${book.releaseDate}"></p>
+                    <p class="card-text text-start" th:text="${book.description}"></p>
+                </div>
+                <div class="card-footer bg-dark border-warning">
+                    <p class="mb-1" th:text="${book.unitPrice} + '원'"></p>
+                    <a th:href="@{/books/book(id=${book.bookId})}" class="btn btn-warning btn-sm">상세 정보</a>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>
