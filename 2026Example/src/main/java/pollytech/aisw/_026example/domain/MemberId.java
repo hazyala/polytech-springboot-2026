@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MemberId {
-    String message() default "중복???�이?�입?�다.";
+    String message() default "중복된 아이디입니다.";
     Class<?>[] groups() default {};
     Class<?>[] payload() default {};
 }

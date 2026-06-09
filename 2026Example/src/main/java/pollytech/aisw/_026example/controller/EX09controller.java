@@ -17,8 +17,8 @@ public class EX09Controller {
     }
 
     @PostMapping("/member")
-    public String requestFormResult(/* ?�략가??@ModelAttribute*/ Member member, Model model){
-//        model.addAttribute("member", member); //?�략가??
+    public String requestFormResult(/* 생략가능 @ModelAttribute*/ Member member, Model model){
+//        model.addAttribute("member", member); //생략가능
         return "signUpResult";
     }
 

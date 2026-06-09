@@ -9,8 +9,8 @@ public class EX08Controller {
     @GetMapping("/exam08")
     public ModelAndView requestMethod(){
         ModelAndView modelView = new ModelAndView();
-        modelView.addObject("title1", "ModelAndView ?�습");
-        modelView.addObject("title2", "ModelAndView??addObject()?� setViewName()�??�용");
+        modelView.addObject("title1", "ModelAndView 연습");
+        modelView.addObject("title2", "ModelAndView는 addObject()와 setViewName()를 사용");
         modelView.setViewName("viewPage");
         return modelView;
     }

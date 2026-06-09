@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>3. Validator 구현체 유형 유효성 검사</title>
+    <style>
+        span{
+            color: #3abde1;
+            border: 1px dotted red;
+        }
+    </style>
+</head>
+<body>
+    <h2>3. Validator 구현체 유형 유효성 검사</h2>
+    <form th:object="${person}" action="/exam09_03" method="post">
+        <p>성명: <input type="text" name="name" th:field="*{name}"><span th:errors="*{name}"></span></p>
+        <p>나이: <input type="text" name="age" th:field="*{age}"><span th:errors="*{age}"></span></p>
+        <p>이메일: <input type="text" name="email"  th:field="*{email}"><span th:errors="*{email}"></span></p>
+        <p>
+            <button type="submit">확인</button>&nbsp;&nbsp;
+            <button type="reset">취소</button>
+        </p>
+    </form>
+</body>
+</html>

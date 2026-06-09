@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class EX02Controller {
     @RequestMapping(value = "/exam02", method = RequestMethod.GET)
     public String requestMethod(){
-        return "<h1>@RestController ?�습 �?..</h1>";
+        return "<h1>@RestController 연습 중...</h1>";
     }
 }

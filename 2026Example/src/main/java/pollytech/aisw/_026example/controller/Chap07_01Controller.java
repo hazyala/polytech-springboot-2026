@@ -31,7 +31,7 @@ public class Chap07_01Controller {
 
         try {
             file.transferTo(saveFile);
-            model.addAttribute("title", "?�일?�로??결과 ?�이지");
+            model.addAttribute("title", "파일업로드 결과 페이지");
             model.addAttribute("originFileName", originFileName);
             model.addAttribute("saveFileName", saveFile.getName());
         } catch (IOException e) {

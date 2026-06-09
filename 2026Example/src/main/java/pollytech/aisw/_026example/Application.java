@@ -1,5 +1,6 @@
 package pollytech.aisw._026example;
 
+import pollytech.aisw._026example.configure.SecurityConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
