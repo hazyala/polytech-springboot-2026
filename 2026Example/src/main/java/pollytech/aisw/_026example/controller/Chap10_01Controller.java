@@ -62,4 +62,40 @@ public class Chap10_01Controller {
 
         return "viewPage10_02";
     }
+
+    @GetMapping("/exam03")
+    public String requestMethod8(Model model){
+        return "viewPage10_03";
+    }
+
+    @GetMapping("/manager/tag")
+    public String requestMethod9(Model model){
+        return "viewPage10_03";
+    }
+
+    @GetMapping("/exam04")
+    public String requesMethod10(Model model){
+        return "viewPage10_04";
+    }
+
+    @GetMapping("/admin/tag")
+    public String requesMethod11(Model model){
+        return "viewPage10_04";
+    }
+
+    @GetMapping("/exam05")
+    public String requesMethod12(Model model){
+        return "viewPage10_05";
+    }
+
+    @GetMapping("/admin")
+    public String requesMethod13(Authentication user, Model model){
+        model.addAttribute("username", user.getName());
+        return "viewPage10_05_result";
+    }
+
+    @GetMapping("/logout")
+    public String requesMethod14(Model model){
+        return "viewPage10_05";
+    }
 }
