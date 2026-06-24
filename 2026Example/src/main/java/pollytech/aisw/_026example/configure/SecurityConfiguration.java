@@ -18,13 +18,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-    // 암호화 설정
+//    암호화 설정
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
-    // 사용자 정보 등록 설정
+//    사용자 정보 등록 설정
     @Bean
     public UserDetailsService userDetailsService(){
         UserDetails user = User.builder()
@@ -47,29 +47,32 @@ public class SecurityConfiguration {
         return new InMemoryUserDetailsManager(user, manager, admin);
     }
 
-    // 특정 URI에 접근할 수 있는 접근 권한 설정
+    //    특정 URI에 접근할 수 있는 접근 권한 설정
     @Bean
     SecurityFilterChain examMethod01(HttpSecurity http) throws Exception{
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable) //csrf 비활성화
                 .authorizeHttpRequests(
                 authorize -> authorize
                         .requestMatchers("/exam10_01/member/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/exam10_01/manager/**").hasRole("MANAGER")
                         .requestMatchers("/exam10_01/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll()
-        ).formLogin(
-                formLogin -> formLogin
-                        .loginPage("/exam10_01/exam05")
-                        .loginProcessingUrl("/exam10_01/exam05")
-                        .defaultSuccessUrl("/exam10_01/admin/")
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                        .failureForwardUrl("/exam10_01/loginfailed")
                 )
-        //로그아웃 설정
-        .logout(logout -> logout
-                        .logoutUrl("exam10_1/logout")
+//                .formLogin(Customizer.withDefaults()) //Spring boot Security에서 제공하는 기본 form 화면
+//                                사용자 정의 로그인 form 화면
+                .formLogin(
+                        formLogin -> formLogin
+                                .loginPage("/exam10_01/exam05")
+                                .loginProcessingUrl("/exam10_01/exam05")
+                                .defaultSuccessUrl("/exam10_01/admin")
+                                .usernameParameter("username")
+                                .passwordParameter("password")
+                                .failureUrl("/exam10_01/loginfailed")
+                )
+//        로그아웃 설정
+                .logout(logout->logout
+                        .logoutUrl("/exam10_01/logout")
                         .logoutSuccessUrl("/exam10_01/exam05")
                 );
 
