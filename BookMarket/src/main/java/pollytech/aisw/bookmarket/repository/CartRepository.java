@@ -1,0 +1,9 @@
+package pollytech.aisw.bookmarket.repository;
+
+import pollytech.aisw.bookmarket.domain.Cart;
+
+public interface CartRepository {
+    Cart create(Cart cart);
+    Cart read(String cartId);
+    void update(String cartId, Cart cart);
+}
