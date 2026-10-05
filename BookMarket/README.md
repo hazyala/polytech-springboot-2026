@@ -22,7 +22,7 @@ repository 데이터는 프로세스 메모리에 있고 재시작 후 유지되
 
 ## 실행 조건
 
-JDK 21을 사용한다. `application.properties`의 context path는 `/BookMarket`, 파일 upload는 `D:/upload/`, datasource는 localhost:3306/bookmarket을 가리킨다. 메모리 repository여도 JDBC starter의 datasource 자동 설정 때문에 DB 연결 조건을 확인해야 한다. 현재 설정과 같은 MySQL 계정/연결 환경이 없는 상태를 성공 실행으로 보지 않는다.
+JDK 21을 사용한다. `application.properties`의 context path는 `/BookMarket`, 파일 upload는 `D:/upload/`, datasource는 localhost:3306/bookmarket을 가리킨다. 메모리 repository여도 JDBC starter의 datasource 자동 설정 때문에 DB 연결 조건을 확인해야 한다.
 
 저장소 루트에서:
 
@@ -37,7 +37,7 @@ bash gradlew bootRun
 bash gradlew test
 ```
 
-기존 test는 `src/test/`에서 확인한다. 본 문서 정비에서는 외부 DB를 붙여 실행하거나 build 설정을 변경하지 않았다.
+기존 test는 `src/test/`에서 확인한다.
 
 ## 구조와 요청
 
