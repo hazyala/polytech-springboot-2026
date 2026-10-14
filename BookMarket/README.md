@@ -2,6 +2,14 @@
 
 Thymeleaf에서 도서 목록·상세·등록을 보고, HTTP session ID로 장바구니를 구분하는 Spring MVC 실습.
 
+## 실행 화면
+
+JDK 21로 BookMarket을 로컬 실행해 도서 조회 흐름을 캡처했다.
+
+| 도서 목록 | 도서 상세 | 카테고리 필터 |
+|---|---|---|
+| ![도서 목록](docs/screenshots/book-list.png) | ![도서 상세](docs/screenshots/book-detail.png) | ![IT전문서 필터](docs/screenshots/category-filter.png) |
+
 ## 도서와 장바구니
 
 - 목록·ID 상세·category·matrix-variable filter를 조회한다.
